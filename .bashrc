@@ -117,11 +117,11 @@ prompt_color() {
     local venv_name=""
 
     if grep -qa docker /proc/1/cgroup; then
-        docker_icon="🐋 "  # Whale for Docker
+        docker_icon=" "  # Whale for Docker
     fi
 
     if [[ -n "$VIRTUAL_ENV" ]]; then 
-	    venv_name =" (${VIRTUAL_ENV##*/}) "
+	    venv_name =" (${VIRTUAL_ENV##*/}) "
     fi
 
     local arrow_color="\[\033[36m\]"  # Cyan
