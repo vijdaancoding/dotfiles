@@ -114,20 +114,21 @@ prompt_color() {
     unset PROMPT_COMMAND
 
     local docker_icon=""
-    local venv_name=""
+    local venv_indicator=""
 
     if grep -qa docker /proc/1/cgroup; then
         docker_icon=" "  # Whale for Docker
-    fi
+    fi 
 
     if [[ -n "$VIRTUAL_ENV" ]]; then 
-	    venv_name=" (${VIRTUAL_ENV##*/}) "
+	    venv_name="${VIRTUAL_ENV##*/}"
+        venv_indicator=" (${env_name})"
     fi
 
     local arrow_color="\[\033[36m\]"  # Cyan
     local reset_color="\[\033[00m\]"  # Reset color
 
-    PS1="${GREEN}${docker_icon}\W\[\033[33m\]\$(parse_git_branch)\[\033[00m\]\n${arrow_color}❯${reset_color} "
+    PS1="${GREEN}${docker_icon}${venv_indicator}\[\033[00;32m\]\W\[\033[33m\]\$(parse_git_branch)\[\033[00m\]\n${arrow_color}❯${reset_color} "
     PS2="\[\033[33;1m\]continue \[\033[0;1m\]> "
 }
 
