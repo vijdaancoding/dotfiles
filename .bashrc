@@ -121,7 +121,7 @@ prompt_color() {
     fi
 
     if [[ -n "$VIRTUAL_ENV" ]]; then 
-	    venv_name =" (${VIRTUAL_ENV##*/}) "
+	    venv_name=" (${VIRTUAL_ENV##*/}) "
     fi
 
     local arrow_color="\[\033[36m\]"  # Cyan
