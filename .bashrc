@@ -204,12 +204,11 @@ eval "$(rbenv init -)"
 
 # Node Version Manager
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Rust Environment
 . "$HOME/.cargo/env"
-
 
 #########################################################################################
 # Tmux 
@@ -219,3 +218,5 @@ export NVM_DIR="$HOME/.nvm"
 if command -v tmux &>/dev/null && [ -z "$TMUX" ] && [ -n "$PS1" ]; then
     tmux attach-session -t default || tmux new-session -s default
 fi
+
+
