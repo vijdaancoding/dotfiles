@@ -1,0 +1,63 @@
+/*
+ * ROFI color theme
+ *
+ * Based on Something Found in the Internet
+ *
+ * User: Contributors
+ * Copyright: *!
+ */
+configuration {
+  font: "JetBrainsMono Nerd Font Medium 10";
+  timeout {
+    delay: 10;
+    action: "kb-cancel";
+  }
+}
+* {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  spacing: 0;
+  fg: #A0A0AB;
+  bg: #18181BCC;         
+  bg-alt: #20212CCC;     
+  fg-alt: #5D5E72;
+  background-color: @bg;
+  text-color: @fg-alt;
+}
+window {
+  border: 2px;
+  border-color: @fg-alt;
+  padding: 4px;  /* Reduced padding */
+  transparency: "real";
+  corner-radius: 12px;
+  width: 25%;  /* Added width constraint */
+}
+mainbox {
+  children: [inputbar, listview];
+}
+inputbar {
+  children: [entry];
+}
+entry {
+  padding: 8px;  /* Reduced padding */
+}
+listview {
+  lines: 6; 
+  scrollbar: true;
+}
+scrollbar {
+  background-color: @bg-alt;
+  handle-color: @fg;
+  margin: 0 0 0 4px; 
+}
+element {
+  children: [element-text];
+}
+element-text {
+  padding: 8px;  /* Reduced padding */
+}
+element-text selected {
+  background-color: @bg-alt;
+  text-color: @fg;
+}

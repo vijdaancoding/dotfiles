@@ -55,7 +55,7 @@ bindsym $mod+Return exec kitty
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run
+#bindsym $mod+d exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -207,3 +207,16 @@ exec_always --no-startup-id xinput set-prop "DLL07A0:01 044E:120B" "libinput Nat
 
 # Keybinding for i3lock
 bindsym $mod+x exec /home/ali-vijdaan/.config/scripts/lock
+
+# Set gaps
+gaps inner 5 
+gaps outer 5
+
+# Remove Title Bar 
+for_window [class="."] border pixel 2
+
+# Key Binding for Rofi
+bindsym $mod+d exec --no-startup-id rofi -show run -theme ~/.config/rofi/config.rasi
+
+# Key binding for Nemo 
+bindsym $mod+n exec nemo
