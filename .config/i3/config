@@ -239,7 +239,7 @@ gaps outer 5
 for_window [class="."] border pixel 2
 
 # Key Binding for Rofi
-bindsym $mod+d exec --no-startup-id rofi -show run -theme ~/.config/rofi/config.rasi
+bindsym $mod+d exec --no-startup-id rofi -show drun -theme ~/.config/rofi/config.rasi
 
 # Key binding for Nemo 
 bindsym $mod+n exec nemo
