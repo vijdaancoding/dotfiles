@@ -1,0 +1,53 @@
+{
+    "git.confirmSync": false,
+    "editor.minimap.enabled": false,
+    "breadcrumbs.enabled": false,
+    "python.defaultInterpreterPath": "/home/ali-vijdaan/Environments/env-lease-insights",
+    "dart.flutterSdkPath": "/home/ali-vijdaan/Development/flutter",
+    "cmake.showOptionsMovedNotification": false,
+    "files.autoSave": "afterDelay",
+    "editor.renderWhitespace": "none",
+    "workbench.editor.empty.hint": "hidden",
+    "files.associations": {
+        "*.logs": "html"
+    },
+    "github.copilot.chat.codeGeneration.useInstructionFiles": false,
+    "github.copilot.chat.copilotDebugCommand.enabled": false,
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
+    "chat.commandCenter.enabled": false,
+    "workbench.activityBar.location": "bottom",
+    "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
+
+    // -------VSCODE VIM SETTINGS -----------
+    "vim.normalModeKeyBindingsNonRecursive": [
+        { "before": ["y"], "after": ["\"", "+", "y"] },
+        { "before": ["Y"], "after": ["\"", "+", "Y"] },
+        { "before": ["d"], "after": ["\"", "+", "d"] },
+        { "before": ["D"], "after": ["\"", "+", "D"] },
+        { "before": ["p"], "after": ["\"", "+", "p"] },
+        { "before": ["P"], "after": ["\"", "+", "P"] },
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        { "before": ["y"], "after": ["\"", "+", "y"] },
+        { "before": ["Y"], "after": ["\"", "+", "Y"] },
+        { "before": ["d"], "after": ["\"", "+", "d"] },
+        { "before": ["D"], "after": ["\"", "+", "D"] },
+        { "before": [">"], "after": [">", "g", "v"] },
+        { "before": ["<"], "after": ["<", "g", "v"] },
+        { "before": ["p"], "after": ["\"", "+", "p"] },
+        { "before": ["P"], "after": ["\"", "+", "P"] },
+    ],
+    "vim.insertModeKeyBindings": [
+        { "before": ["j", "j"], "after": ["<Esc>"] }
+    ], 
+
+    "terminal.integrated.profiles.linux": {
+    "bash-vscode": {
+        "path": "/bin/bash",
+        "args": ["--rcfile", "/home/ali-vijdaan/.bashrc-vscode"]
+    }
+    },
+    "terminal.integrated.defaultProfile.linux": "bash-vscode",
+    "git.suggestSmartCommit": false
+
+}
