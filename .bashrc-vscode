@@ -1,0 +1,92 @@
+#!/bin/bash
+
+# Minimal Bash Config for VS-Code 
+
+# History
+HISTCONTROL=ignoreboth
+shopt -s histappend
+
+# ANSI Color Codes
+RED="\[\033[0;31m\]"
+BROWN="\[\033[0;33m\]"
+GREY="\[\033[0;97m\]"
+GREEN="\[\033[0;32m\]"
+BLUE="\[\033[0;34m\]"
+PS_CLEAR="\[\033[0m\]"
+SCREEN_ESC="\[\033k\033\134\]"
+
+COLOR1="${BLUE}"
+COLOR2="${BLUE}"
+P="\$"
+
+parse_git_branch() {
+  local git_dir=$(git rev-parse --show-toplevel 2>/dev/null)
+  if [[ -n "$git_dir" ]]; then
+    local branch=$(git symbolic-ref --short HEAD 2>/dev/null || git describe --tags --always 2>/dev/null)
+    if [[ -n "$branch" ]]; then
+      echo "  $branch"
+    fi
+  fi
+}
+
+prompt_color() {
+  unset PROMPT_COMMAND
+  local docker_icon=""
+  local venv_indicator=""
+  
+  if grep -qa docker /proc/1/cgroup 2>/dev/null; then
+    docker_icon=" 🐳"
+  fi
+  
+  if [[ -n "$VIRTUAL_ENV" ]]; then
+    local venv_name="${VIRTUAL_ENV##*/}"
+    venv_indicator=" (${venv_name})"
+  fi
+  
+  local arrow_color="\[\033[36m\]" # Cyan
+  local reset_color="\[\033[00m\]" # Reset color
+  
+  PS1="${GREEN}${docker_icon}${venv_indicator}${reset_color}\[\033[00;32m\]\w\[\033[33m\]\$(parse_git_branch)${reset_color}\n${arrow_color}❯${reset_color} "
+  PS2="\[\033[33;1m\]continue \[\033[0;1m\]> "
+}
+
+# Set default prompt
+prompt_color
+
+# Color support for ls/grep
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
+fi
+
+# Aliases from your main .bash_aliases
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# PATH additions (copied from your main .bashrc)
+export PATH="$PATH:/home/ali-vijdaan/.local/bin"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+. "$HOME/.cargo/env"
+
+# Bash completion
+if ! shopt -oq posix; then
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+    fi
+fi
+
+# Zoxide
+eval "$(zoxide init bash)"
+
+# Change Cap-Lock to Esc
+setxkbmap -option caps:ctrl_modifier
+xcape -e 'Caps_Lock=Escape'
+
