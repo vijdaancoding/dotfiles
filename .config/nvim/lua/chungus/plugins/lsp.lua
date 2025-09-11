@@ -153,7 +153,16 @@ return {
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
     local servers = {
       -- clangd = {},
-      -- gopls = {},
+      gopls = {
+        settings = {
+          gopls = {
+            analyses = {
+              unusedparams = true,
+            },
+            staticcheck = true,
+          },
+        },
+      },
       -- pyright = {},
       -- rust_analyzer = {},
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -163,7 +172,16 @@ return {
       --
       -- But for many setups, the LSP (`tsserver`) will work just fine
       ts_ls = {}, -- tsserver is deprecated
-      ruff = {},
+      ruff = {
+        init_options = {
+          settings = {
+            args = {
+              "--line-length=150",
+              "--ignore=E501,C901",
+            },
+          },
+        },
+      },
       pylsp = {
         settings = {
           pylsp = {
@@ -175,7 +193,7 @@ return {
               mccabe = { enabled = false },
               pylsp_mypy = { enabled = false },
               pylsp_black = { enabled = false },
-              pylsp_isort = { enabled = false },
+              pylsp_isort = { enabled = true },
             },
           },
         },

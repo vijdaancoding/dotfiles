@@ -38,7 +38,6 @@ vim.o.backspace = 'start,eol,indent'
 
 vim.o.updatetime = 50
 vim.o.updatetime = 50
-vim.o.colorcolumn = "80"
 
 vim.o.clipboard = "unnamedplus"
 
