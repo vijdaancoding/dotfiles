@@ -59,11 +59,30 @@ end, { desc = "Copy file path to clipboard" })
 local isLspDiagnosticsVisible = true
 vim.keymap.set("n", "<leader>lx", function()
     isLspDiagnosticsVisible = not isLspDiagnosticsVisible
-    vim.diagnostic.config({
-        virtual_text = isLspDiagnosticsVisible,
-        underline = isLspDiagnosticsVisible
-    })
-end, { desc = "Toggle LSP diagnostics" })
+
+    if isLspDiagnosticsVisible then
+        vim.diagnostic.config({
+            virtual_text = {
+                severity = vim.diagnostic.severity.ERROR,
+            },
+            underline = {
+                severity = vim.diagnostic.severity.ERROR,
+            },
+            signs = {
+                severity = vim.diagnostic.severity.ERROR,
+            },
+            update_in_insert = false,
+        })
+        print("Diagnostics: showing only errors")
+    else
+        vim.diagnostic.config({
+            virtual_text = false,
+            underline = false,
+            signs = false,
+        })
+        print("Diagnostics: hidden")
+    end
+end, { desc = "Toggle LSP diagnostics (only errors)" })
 
 -- Clear highlight *and* keep regular Esc behavior in normal mode
 vim.keymap.set('n', '<Esc>', function()

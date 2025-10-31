@@ -4,6 +4,10 @@
     "breadcrumbs.enabled": false,
     "python.defaultInterpreterPath": "/home/ali-vijdaan/Environments/env-lease-insights",
     "dart.flutterSdkPath": "/home/ali-vijdaan/Development/flutter",
+    "go.toolsEnvVars": {
+        "GOPATH": "/home/ali-vijdaan/go",
+        "PATH": "/usr/local/go/bin:/home/ali-vijdaan/go/bin:${env:PATH}"
+    },
     "cmake.showOptionsMovedNotification": false,
     "files.autoSave": "afterDelay",
     "editor.renderWhitespace": "none",
@@ -48,6 +52,8 @@
     }
     },
     "terminal.integrated.defaultProfile.linux": "bash-vscode",
-    "git.suggestSmartCommit": false
+    "git.suggestSmartCommit": false,
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "python.analysis.typeCheckingMode": "standard"
 
 }
