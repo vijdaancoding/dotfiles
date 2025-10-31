@@ -11,7 +11,8 @@
 # Set terminal type to kitty
 export TERMINAL=kitty
 export TERM="xterm-kitty"
-
+export PATH="$HOME/.local/kitty.app/bin:$PATH"
+export NO_AT_BRIDGE=1
 #########################################################################################
 # Exit if Not Running Interactively
 #########################################################################################
@@ -147,6 +148,10 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+alias ga='git add'
+alias gc='git commit -m'
+alias gp='git pull'
+
 # Add an "alert" alias for long running commands.
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
@@ -191,21 +196,36 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 # Rust Environment
-. "$HOME/.cargo/env"
+export PATH="$HOME/.cargo/bin/:$PATH"
+
+# Yazi
+export PATH="$PATH:$HOME/yazi/target/release/"
 
 #########################################################################################
 # Tmux
 #########################################################################################
 
 if command -v tmux &>/dev/null && [ -z "$TMUX" ] && [ -n "$PS1" ]; then
-    tmux attach-session -t default || tmux new-session -s default
+    tmux attach-session -t main || tmux new-session -s main
 fi
 
 ########################################################################################
 # Fastfetch
 ########################################################################################
 
-fastfetch
+# fastfetch
+
+########################################################################################
+# Yazi
+########################################################################################
+
+function y() {
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+    yazi "$@" --cwd-file="$tmp"
+    IFS= read -r -d '' cwd < "$tmp"
+    [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+    rm -f -- "$tmp"
+}
 
 ########################################################################################
 # Zoxide
@@ -219,3 +239,4 @@ eval "$(zoxide init bash)"
 
 setxkbmap -option caps:ctrl_modifier
 xcape -e 'Caps_Lock=Escape'
+. "$HOME/.cargo/env"
