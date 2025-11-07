@@ -163,7 +163,19 @@ return {
           },
         },
       },
-      -- pyright = {},
+      pyright = {
+        settings = {
+          python = {
+            venvPath = ".",
+            venv = ".venv",
+            analysis = {
+              typeCheckingMode = "strict",
+              autoSearchPaths = true,
+              useLibraryCodeForTypes = true,
+            }
+          }
+        }
+      },
       rust_analyzer = {},
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
       --
