@@ -148,6 +148,7 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+# Git Alias
 alias ga='git add'
 alias gc='git commit -m'
 alias gp='git pull'
@@ -155,9 +156,11 @@ alias gp='git pull'
 # Add an "alert" alias for long running commands.
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Custom Alias
+# Work Alias
 alias nv='nvim'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+alias ff="fastfetch"
 
 # Source ~/.bash_aliases if it exists
 if [ -f ~/.bash_aliases ]; then
@@ -201,6 +204,13 @@ export PATH="$HOME/.cargo/bin/:$PATH"
 # Yazi
 export PATH="$PATH:$HOME/yazi/target/release/"
 
+########################################################################################
+# Fastfetch
+########################################################################################
+
+kitty +kitten icat -n --align=left --transfer-mode=stream ~/Pictures/Wallpapers/spider-girl-termv2.png > ~/Pictures/Wallpapers/spider-girl.bin
+ff --logo ~/Pictures/Wallpapers/spider-girl.bin --logo-type raw --logo-width 30 --logo-height 17
+ 
 #########################################################################################
 # Tmux
 #########################################################################################
@@ -209,11 +219,6 @@ if command -v tmux &>/dev/null && [ -z "$TMUX" ] && [ -n "$PS1" ]; then
     tmux attach-session -t main || tmux new-session -s main
 fi
 
-########################################################################################
-# Fastfetch
-########################################################################################
-
-# fastfetch
 
 ########################################################################################
 # Yazi
